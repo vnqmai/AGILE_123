@@ -1,0 +1,28 @@
+.prod_image img{
+    height:100px;
+    border: 2px solid #ddd;
+    border-radius:7px;
+    padding:5px;
+}
+.prod_image a{
+    margin-left:10px;
+}
+
+.prod_image input{
+    display:none;
+}
+.prod_image{
+    /* margin-left:5%; */
+    
+}
+.list_image{
+    width:80%;
+    margin-left:10%;
+}
+.prod_image_in_table img{
+    height:45px;
+    cursor: pointer;
+}
+.prod_image_in_table input{
+    display:none;
+}
