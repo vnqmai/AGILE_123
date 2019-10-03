@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://45.119.84.79/agile';
+$config['base_url'] = '';
 // $config['base_url'] = 'https://tristenaroundtheworld.com';
 // $config['base_url'] = 'https://quangtien123321.000webhostapp.com/';
 

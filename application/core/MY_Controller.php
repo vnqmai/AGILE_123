@@ -5,16 +5,6 @@ class MY_Controller extends CI_Controller{
     {
         parent::__construct();
     
-        session_start();
-        $loginPage = "auth?returnUrl=";
-        //print_r(json_encode((object)$this->controllerlist->getControllers()));
-        if(!isset($_SESSION["user"]))
-        {
-            return redirect(base_url().$loginPage.$_SERVER['REDIRECT_QUERY_STRING'] ?? '/');
-        }
-        
-        //    $this->CheckPermission();
-    
     } 
     public function CheckPermission(){
         $this->load->model('User_model');
