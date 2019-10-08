@@ -105,4 +105,32 @@ class Product extends MY_Controller{
         else
             show_error('The product you are trying to edit does not exist.');
     }
+
+    function remove($id)
+    {
+        $product = $this->Product_model->get_product($id);
+          // check if the product exists before trying to delete it
+        try{
+            if(isset($product['id']))
+            {
+                $params = array(
+                    'del' => 1,
+                );
+                $this->Product_model->update_product($id,$params);   
+                return $this->Success(array(
+                        'message' => 'Xóa thành công!'
+                    ));
+                // return redirect(base_url().'classes');
+            }
+            throw new Exception('Không tìm thấy hàng hóa');
+        }
+        catch(Exception $e){
+            return $this->Success(array(
+                'isSuccess' => false,
+                'message' => $e->getMessage()
+            ));
+        }
+        
+    }
+    
 }
