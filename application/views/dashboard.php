@@ -17,28 +17,25 @@
                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="info-box bg-<?=color($key)?>">
                                         <div class="icon">
-                                            <i class="material-icons">free_breakfast</i>
-                                        </div>
-                                        <div class="content">
-                                            <div class="text" style="font-size:15px"><?=$c['name']?></div>
+                                            <img src="<?=$c['image']?>">
+                                        </div>                                        
+                                        <div class="content"> 
+                                            <div class="text" style="font-size:30px"><?=$c['name']?></div>                                                                                       
                                             
-                                        </div>
-                                        <div class="content">
-                                            <div style="text-alight:center" class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20" id='_<?=$c['id']?>'>
-                                            0
-                                            </div>
                                             <input name="<?=$c['id']?>" id="<?=$c['id']?>" type="number" hidden value='0' >
-                                            
-                                        </div>
-                                        <div class="content">
-                                            <div class="text sales" style="font-size:15px">
-                                            <?=number_format($c['price'])?>
-                                            <input  id="<?=$c['id']?>_Price" type="hidden" value="<?=$c['price']?>">
+                                            <div class="text sales" style="font-size:25px">
+                                                <?=number_format($c['price'])?> VNĐ                                         
+                                                <input  id="<?=$c['id']?>_Price" type="hidden" value="<?=$c['price']?>">
                                             </div>
+                                                                                        
+                                            <a onclick="plus('<?=$c['id']?>')"> <i class="material-icons" style="font-size:35px">add_box</i></a> 
+                                            <span style="text-alight:center;font-size:35px;" class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20" id='_<?=$c['id']?>'>
+                                            0
+                                            </span> 
+                                            <a onclick="subtract('<?=$c['id']?>')">  <i class="material-icons" style="font-size:35px">indeterminate_check_box</i></a> 
                                         </div>
                                         <div>
-                                         <a onclick="plus('<?=$c['id']?>')"> <i class="material-icons" style="font-size:30px">add_box</i></a> 
-                                         <a onclick="subtract('<?=$c['id']?>')">  <i class="material-icons" style="font-size:30px">indeterminate_check_box</i></a> 
+                                         
                                          </div>
                                     </div>
                                 </div>
