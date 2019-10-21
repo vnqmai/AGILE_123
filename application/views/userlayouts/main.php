@@ -28,7 +28,10 @@
         </div>
     </div>
     <!-- #END# Page Loader -->
-   
+   <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Top Bar -->
+    <?php include_once("navbar.php") ?>
 	
 	<div class="col-md-12" role="main">
         <?php	
@@ -41,7 +44,3 @@
 </body>
 
 </html>
-
-
-
-
