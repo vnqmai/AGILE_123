@@ -40,7 +40,10 @@ class Auth extends CI_Controller {
     public function logout()
 	{
         $sessionId=session_id();
-   
+        
+        if($_SESSION["isadmin"]==1){
+            $_SESSION["isadmin"] = 0;                                
+         }
 
         session_destroy();
         return redirect(base_url().'auth');
@@ -119,7 +122,13 @@ class Auth extends CI_Controller {
                     if($user != null){
                         $user = (object)$user;
                          if($user->password == MD5($password)){
-                            //success
+
+                            //success as admin
+                             if($user->username=='admin'){
+                                $_SESSION["isadmin"] = 1;                                
+                             }
+                             
+                            //success as member
 
                             $_SESSION["user"] = $user;
                            

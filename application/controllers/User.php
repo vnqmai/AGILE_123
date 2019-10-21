@@ -4,6 +4,18 @@
  * www.crudigniter.com
  */
  
+session_start();
+if(isset($_SESSION["isadmin"])){
+    if($_SESSION["isadmin"]!=1){
+        header('Location: localhost/agile/auth');
+        exit();
+    }        
+}
+else if (!isset($_SESSION["isadmin"])){
+    header('Location: http://'.$_SERVER['HTTP_HOST'].'/agile/auth');
+    exit();
+}   
+
 class User extends MY_Controller{
     function __construct()
     {
