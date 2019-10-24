@@ -151,10 +151,45 @@ class OrderBill extends MY_Controller{
                         $bill_detail_id = $this->Bill_detail_model->add_bill_detail($params);
                     }
                     }
-
+                    $email= $this->input->post('EMAIL');
+                    if(!empty($email)){
+                        $config = Array(
+                            'protocol' => 'smtp',
+                            'smtp_host' => 'ssl://smtp.googlemail.com',
+                            'smtp_port' => 465,
+                            'smtp_user' => 'fpohcmue@gmail.com', // change it to yours
+                            'smtp_pass' => 'quangtientran1997', // change it to yours
+                            'mailtype' => 'html',
+                            'charset' => 'utf-8',
+                            'wordwrap' => TRUE
+                          );
+                          
+                                $this->load->library('email', $config);
+                                $this->email->set_newline("\r\n");
+                                $this->email->from('fpohcmue@gmail.com'); // change it to yours
+                                $this->email->to($email);// change it to yours
+                                $this->email->subject('Thông báo đặt món thành công');
+                                $this->email->message("Bạn đã đặt món thành công");
+                                if($this->email->send())
+                               {
+                                return $this->Success(array(
+                                    'message' => 'Thành công!'
+                                ));
+    
+                               }
+                               else
+                              {
+                               show_error($this->email->print_debugger());
+                              }
+                    }
                     return $this->Success(array(
                         'message' => 'Thành công!'
                     ));
+                   
+
+
+
+                    
          
         }
         return $this->Success(array(
