@@ -120,27 +120,27 @@ class OrderBill extends MY_Controller{
     }
 
     function add_order_bill()
-    {   
+    {            
         if(isset($_POST) && count($_POST) > 0){
-                $dt=$_POST['data'];
-            
-                $totalPrice=0;
-                foreach($dt as $key=>$item){
-                    if($item['Amount']){
-                        $totalPrice+= $item['Amount']*$item['Price'];
-                    }
+            $dt=$_POST['data'];
+        
+            $totalPrice=0;
+            foreach($dt as $key=>$item){
+                if($item['Amount']){
+                    $totalPrice+= $item['Amount']*$item['Price'];
                 }
-               
-                    $bill_Id=ObjectId();
-                    $params = array(
-                        'userId' => $_SESSION['user']->id,
-                        'totalPrice' => $totalPrice,
-                        'timestamp' =>date('Y-m-d H:i:s'),
-                        'id'            =>  $bill_Id
-                    );       
-                    $bill_id = $this->Order_bill_model->add_bill($params);
-                    foreach($dt as $key=>$item){
-                         if($item['Amount']){
+            }
+           
+                $bill_Id=ObjectId();
+                $params = array(
+                    'userId' => $_SESSION['user']->id,
+                    'totalPrice' => $totalPrice,
+                    'timestamp' =>date('Y-m-d H:i:s'),
+                    'id'            =>  $bill_Id
+                );       
+                $bill_id = $this->Order_bill_model->add_bill($params);
+                foreach($dt as $key=>$item){
+                     if($item['Amount']){
                         $params = array(
                             'amount' => $item['Amount'],
                             'productId' =>  $item['id'],
@@ -150,7 +150,7 @@ class OrderBill extends MY_Controller{
                         
                         $bill_detail_id = $this->Bill_detail_model->add_bill_detail($params);
                     }
-                    }
+                }
                     $email= $this->input->post('EMAIL');
                     if(!empty($email)){
                         $config = Array(
@@ -162,8 +162,8 @@ class OrderBill extends MY_Controller{
                             'mailtype' => 'html',
                             'charset' => 'utf-8',
                             'wordwrap' => TRUE
-                          );
-                          
+                        );
+                        
                                 $this->load->library('email', $config);
                                 $this->email->set_newline("\r\n");
                                 $this->email->from('fpohcmue@gmail.com'); // change it to yours
@@ -171,31 +171,24 @@ class OrderBill extends MY_Controller{
                                 $this->email->subject('Thông báo đặt món thành công');
                                 $this->email->message("Bạn đã đặt món thành công");
                                 if($this->email->send())
-                               {
+                            {
                                 return $this->Success(array(
                                     'message' => 'Thành công!'
                                 ));
     
-                               }
-                               else
-                              {
-                               show_error($this->email->print_debugger());
-                              }
+                            }
+                            else
+                            {
+                            show_error($this->email->print_debugger());
+                            }
                     }
                     return $this->Success(array(
                         'message' => 'Thành công!'
-                    ));
-                   
-
-
-
-                    
-         
+                    ));         
         }
         return $this->Success(array(
             'isSuccess' =>false,
             'message' =>'Thất bại!'
-        ));
-        
+        ));               
     }    
 }

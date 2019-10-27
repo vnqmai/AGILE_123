@@ -10,7 +10,7 @@
                     <div class="body">
                         <div id="content"></div>
                             <div class="row clearfix " id='sales'>
-                            <form>
+                            <form id="_order">
                             <?php
                             foreach($product as $key=>$c){
                                         ?>
@@ -34,9 +34,6 @@
                                             </span> 
                                             <a onclick="subtract('<?=$c['id']?>')">  <i class="material-icons" style="font-size:35px">indeterminate_check_box</i></a> 
                                         </div>
-                                        <div>
-                                         
-                                         </div>
                                     </div>
                                 </div>
 
@@ -54,9 +51,9 @@
             </div>
         </div>
         <script>
-       function order(){
+       function order(){           
            var total=0;
-      var data= $("form").serializeArray().map(x=>{
+      var data= $("#_order").serializeArray().map(x=>{
           return {
               id : x.name,
               Amount : x.value,
@@ -69,40 +66,67 @@
     
       data.forEach(callback);
         var self = this;
-       if(total==0){
-           return;
-       }
-         
+        <?php session_start(); ?>
+        var isLogged = <?php echo isset($_SESSION['user'])?1:0; ?> ;
+       if(!isLogged){
             swal({
-                title: "Đặt món ",
-                text: "Bạn chắc chắn muốn đặt món?",
-                type: "info",
+                title: "THÔNG BÁO ",
+                text: "Vui lòng đăng nhập để đặt món!",
+                type: "error",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
-                confirmButtonText: "Có",
-                cancelButtonText: "Không",
+                confirmButtonText: "Đăng nhập",
+                cancelButtonText: "Hủy",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function() {
-                $.post(
-                     '<?=base_url()?>OrderBill/add_order_bill',
-                {
-                    data:data
-                },
-                   function(result){
-                        swal({
-                            title: 'THÔNG BÁO',
-                            type: result.isSuccess == true ? 'success' : 'error',
-                            text: result.message
-                        }, function() {
-                            if(result.isSuccess == true){
-                            window.location.reload();
-                            }
-                           
-                        });
-                    }
-                );
+            }, function(){
+                window.location='./auth';
             });
+       }
+       else {
+            if(total==0){
+                swal({
+                    title: "THÔNG BÁO ",
+                    text: "Vui lòng chọn món!",
+                    type: "error",
+                    showCancelButton: true,                
+                    cancelButtonText: "Ok",
+                    closeOnConfirm: false,
+                    showLoaderOnConfirm: true
+                });
+            }
+            else{
+                swal({
+                    title: "Đặt món ",
+                    text: "Bạn chắc chắn muốn đặt món?",
+                    type: "info",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "Có",
+                    cancelButtonText: "Không",
+                    closeOnConfirm: false,
+                    showLoaderOnConfirm: true
+                }, function() {
+                    $.post(
+                            '<?=base_url()?>/OrderBill/add_order_bill',
+                    {
+                        data:data
+                    },
+                        function(result){
+                            swal({
+                                title: 'THÔNG BÁO',
+                                type: result.isSuccess == true ? 'success' : 'error',
+                                text: result.message
+                            }, function() {
+                                if(result.isSuccess == true){
+                                    window.location.reload();
+                                }                           
+                            });                                             
+                        }
+                    );                
+                });
+            }    
+       }                        
         
     }
 </script>

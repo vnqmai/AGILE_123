@@ -49,7 +49,7 @@
                                         <td class='text-center'>  
                                         <a href='<?=base_url()?>bill_detail/index/<?= $c['id'] ?>' class="btn btn-success btn-xs" data-toggle="tooltip"  data-original-title="Chi tiết"><i class='material-icons' >search</i></a>
 
-                                        <a href='<?=base_url()?>bill/edit/<?=$date_of_sale['id']?>/<?= $c['id']?>' class="btn btn-warning btn-xs" data-toggle="tooltip"  data-original-title="Sửa"><i class='material-icons' >edit</i></a>
+                                        <a href='<?=base_url()?>orderbill/edit/<?= $c['id']?>' class="btn btn-warning btn-xs" data-toggle="tooltip"  data-original-title="Sửa"><i class='material-icons' >edit</i></a>
                                         <a  onclick="onDelete('<?= $c['id']?>','<?= $c['timestamp']?>')" class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Xóa"><i class='material-icons' >delete</i></a>
                                             </td>
                                             </tr>
@@ -84,7 +84,7 @@
                 showLoaderOnConfirm: true
             }, function() {
                 $.post(
-                    '<?=base_url()?>bill/remove/'+id,
+                    '<?=base_url()?>orderbill/remove/'+id,
                 
                     function(result){
                         swal({
