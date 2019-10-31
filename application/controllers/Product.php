@@ -4,17 +4,7 @@
  * www.crudigniter.com
  */
 
-session_start();
-if(isset($_SESSION["isadmin"])){
-    if($_SESSION["isadmin"]!=1){
-        header('Location: localhost/agile/auth');
-        exit();
-    }        
-}
-else if (!isset($_SESSION["isadmin"])){
-    header('Location: http://'.$_SERVER['HTTP_HOST'].'/agile/auth');
-    exit();
-}    
+session_start();    
 
 class Product extends MY_Controller{
     function __construct()
@@ -29,6 +19,17 @@ class Product extends MY_Controller{
      */
     function index()
     {
+        if(isset($_SESSION["isadmin"])){
+            if($_SESSION["isadmin"]!=1){
+                header('Location: localhost/agile/auth');
+                exit();
+            }        
+        }
+        else if (!isset($_SESSION["isadmin"])){
+            header('Location: http://'.$_SERVER['HTTP_HOST'].'/agile/auth');
+            exit();
+        }
+
         $data['product'] = $this->Product_model->get_all_product();
         
         $data['_view'] = 'product/index';
@@ -37,6 +38,17 @@ class Product extends MY_Controller{
     
     function add()
     {   
+        if(isset($_SESSION["isadmin"])){
+            if($_SESSION["isadmin"]!=1){
+                header('Location: localhost/agile/auth');
+                exit();
+            }        
+        }
+        else if (!isset($_SESSION["isadmin"])){
+            header('Location: http://'.$_SERVER['HTTP_HOST'].'/agile/auth');
+            exit();
+        }
+
         $this->form_validation->set_rules('name',"name",'required');
         $this->form_validation->set_rules('price',"price",'required');
         if($this->form_validation->run())
@@ -88,6 +100,17 @@ class Product extends MY_Controller{
 
     function edit($id)
     {   
+        if(isset($_SESSION["isadmin"])){
+            if($_SESSION["isadmin"]!=1){
+                header('Location: localhost/agile/auth');
+                exit();
+            }        
+        }
+        else if (!isset($_SESSION["isadmin"])){
+            header('Location: http://'.$_SERVER['HTTP_HOST'].'/agile/auth');
+            exit();
+        }
+
         $this->form_validation->set_rules('name',"name",'required');
         $this->form_validation->set_rules('price',"price",'required');
         // check if the product exists before trying to edit it
@@ -120,6 +143,17 @@ class Product extends MY_Controller{
 
     function remove($id)
     {
+        if(isset($_SESSION["isadmin"])){
+            if($_SESSION["isadmin"]!=1){
+                header('Location: localhost/agile/auth');
+                exit();
+            }        
+        }
+        else if (!isset($_SESSION["isadmin"])){
+            header('Location: http://'.$_SERVER['HTTP_HOST'].'/agile/auth');
+            exit();
+        }
+        
         $product = $this->Product_model->get_product($id);
           // check if the product exists before trying to delete it
         try{
@@ -143,6 +177,13 @@ class Product extends MY_Controller{
             ));
         }
         
+    }
+
+    function details($id){
+        $data['product'] = $this->Product_model->get_product($id);
+        
+        $data['_view'] = 'product/details';
+        $this->load->view('userlayouts/main',$data);        
     }
     
 }
