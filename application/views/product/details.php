@@ -13,7 +13,7 @@
             </div>
             <hr>
             <div>
-                <a href="/agile" class="btn">Trở về đặt món</a>
+                <a href="#" class="btn" onClick="history.go(-1);">Trở về</a>
             </div>
         </div>
     </div>

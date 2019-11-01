@@ -34,7 +34,7 @@
                                             </span> 
                                             <a onclick="subtract('<?=$c['id']?>')">  <i class="material-icons" style="font-size:35px">indeterminate_check_box</i></a> 
                                             <div>
-                                                <a href="product/details/<?=$c['id']?>" class="btn btn-default">Xem chi tiết</a>
+                                                <a href="order/details/<?=$c['id']?>" class="btn btn-default">Xem chi tiết</a>
                                             </div>
                                         </div>                                        
                                     </div>
