@@ -78,6 +78,26 @@ class Bill_detail_model extends CI_Model
          ->get()
         ->result_array();
     }
+
+    function get_all_bill_detail_by_user_id($bill_id,$user_id)
+    {
+
+        // $this->db->order_by('id', 'desc');
+        // return $this->db->get('bill_detail')->result_array();
+        $this->db->order_by('id', 'desc');
+        return $this->db->select('b.*,p.price as price,p.name as productName')
+        ->from('bill_detail b')
+        
+        ->join('order_bill b1','b1.id=b.bill_id','left')    
+        ->join('product p','p.id=b.productId','left')
+        ->where('b1.id',$bill_id)
+        ->where('b1.userId',$user_id)
+        // ->where('b.del !=',1) 
+        // ->or_where('b.del is null') 
+        ->where("(b.del != 1 OR b.del is null)")
+         ->get()
+        ->result_array();
+    }
         
     /*
      * function to add new bill_detail
