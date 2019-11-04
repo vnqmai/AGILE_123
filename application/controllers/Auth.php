@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Auth extends CI_Controller {
     function __construct()
     {
@@ -9,6 +8,53 @@ class Auth extends CI_Controller {
         $this->load->model('User_model');
         // $this->load->model('User_active_model');
     } 
+
+    /*
+     * Adding a new user
+     */
+    public function createaccount()
+    {   
+        $this->load->view('auth/createaccount');
+        $this->form_validation->set_rules('username',"username",'required');
+        $this->form_validation->set_rules('password',"password",'required');
+        $this->form_validation->set_rules('confirmPassword',"confirmPassword",'required');
+        if($this->form_validation->run())
+        {
+           $username=$this->input->post('username');
+            $password = $this->input->post('password');
+            $confirmPassword = $this->input->post('confirmPassword');
+            $user = $this->User_model->get_user_by_username($username);
+
+            if($user==null){
+                if( $password==$confirmPassword ){
+                    $params = array(
+                        'password' => MD5($this->input->post('password')),
+                        'username' => $this->input->post('username'),
+                        'firstName' => $this->input->post('firstName'),
+                        'lastName' => $this->input->post('lastName'),
+                        'email' => $this->input->post('email'),
+                        'phone' => $this->input->post('phone'),
+                        'id'            => ObjectId()
+                    );
+                    $user_id = $this->User_model->add_user($params);
+                    return redirect(base_url().'auth');
+                }
+                else{
+                    $data['_view'] = 'auth/createaccount';
+                }
+            }
+            else{
+            $data['message']='Tài khoản đã tồn tại';
+            $data['_view'] = 'auth/createaccount';
+            }
+        }
+        else
+        {                   
+            $data['_view'] = 'auth/createaccount';
+        }
+       
+    }  
+
     public function Success($ar = array(
         'isSuccess' => true,
         'message'   => "Thành công",
@@ -23,31 +69,31 @@ class Auth extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($dt));
     }
-	public function index()
-	{
+    public function index()
+    {
         $returnUrl = $_GET['returnUrl'] ?? "";
         $data['returnUrl'] = base_url().$returnUrl;
-		$this->load->view('auth/login',$data);
-	
+        $this->load->view('auth/login',$data);
+    
     }
     public function resetPassword($id=null)
-	{
+    {
         
         $data['id'] = $id;
-		$this->load->view('auth/resetPassword',$data);
-	
+        $this->load->view('auth/resetPassword',$data);
+    
     }
     public function logout()
-	{
+    {
         $sessionId=session_id();
         
         if($_SESSION["isadmin"]==1){
             $_SESSION["isadmin"] = 0;                                
          }
-
         session_destroy();
         return redirect(base_url().'auth');
     }
+
     public function forgetPassword(){
         $this->load->view('auth/forgetPassword');
     }
@@ -56,13 +102,10 @@ class Auth extends CI_Controller {
             try{
                 $email = $this->input->post("email");
                 if(!empty($email)){
-
                     $email=$this->User_model->get_user_by_email($email);
                     
                     if($email != null){
                         $email = (object)$email;
-
-
                     
                     $config = Array(
                         'protocol' => 'smtp',
@@ -90,7 +133,6 @@ class Auth extends CI_Controller {
                                     'message' =>"Bạn vui lòng kiểm tra email!",
                                     "data" => null
                             )));
-
                            }
                            else
                           {
@@ -110,9 +152,8 @@ class Auth extends CI_Controller {
             }
         }
              
-
     }
-	function Login(){
+    function Login(){
         if(isset($_POST) && count($_POST) > 0){
             try{
                 $username = $this->input->post("username");
@@ -122,14 +163,12 @@ class Auth extends CI_Controller {
                     if($user != null){
                         $user = (object)$user;
                          if($user->password == MD5($password)){
-
                             //success as admin
                              if($user->username=='admin'){
                                 $_SESSION["isadmin"] = 1;                                
                              }
                              
                             //success as member
-
                             $_SESSION["user"] = $user;
                            
                             return $this->output
@@ -169,7 +208,6 @@ class Auth extends CI_Controller {
             }
         }
     }
-
     function editPassword($id)
     {
         try{
