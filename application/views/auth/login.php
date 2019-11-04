@@ -57,8 +57,12 @@
                             <button id="myBtn" class="btn btn-block bg-blue waves-effect" type="submit" onclick="login()">Đăng nhập</button>
                         </div>
                     </div>
-                    <div class="row m-t-15 m-b--20">
-                        
+                    <div class="row m-t-0 m-b--0">
+                        <div class="col-xs-12 align-right">
+                            <a href="<?=base_url()?>Auth/createaccount">Tạo tài khoản</a>
+                        </div>
+                    </div>
+                    <div class="row m-t-0 m-b--0">
                         <div class="col-xs-12 align-right">
                             <a href="<?=base_url()?>Auth/forgetPassword">Quên mật khẩu?</a>
                         </div>
