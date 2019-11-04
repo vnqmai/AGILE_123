@@ -1,6 +1,4 @@
 
-    
-
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
@@ -66,7 +64,7 @@
     
       data.forEach(callback);
         var self = this;
-        <?php session_start(); ?>
+        
         var isLogged = <?php echo isset($_SESSION['user'])?1:0; ?> ;
        if(!isLogged){
             swal({
