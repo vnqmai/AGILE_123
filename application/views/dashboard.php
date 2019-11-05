@@ -109,7 +109,7 @@
                     showLoaderOnConfirm: true
                 }, function() {
                     $.post(
-                            '<?=base_url()?>/OrderBill/add_order_bill',
+                            '<?=base_url()?>/Order/add_order_bill',
                     {
                         data:data
                     },

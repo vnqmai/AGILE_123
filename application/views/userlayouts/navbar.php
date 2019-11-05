@@ -32,10 +32,7 @@
               <?php
                 }  
                 else{                                                    
-              ?>
-              <?php
-                }                                    
-              ?>
+              ?>              
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="<?php base_url()?>auth/createaccount" class="btn btn-default">Đăng ký</a>                                    
@@ -44,6 +41,9 @@
                   <a href="<?php base_url()?>auth" class="btn btn-default">Đăng nhập</a>                  
                 </li>
               </ul>
+              <?php
+                }                                    
+              ?>
             </nav>
           </div>
 </div>
