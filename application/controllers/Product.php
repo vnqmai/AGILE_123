@@ -4,7 +4,17 @@
  * www.crudigniter.com
  */
 
-session_start();    
+session_start();
+if(isset($_SESSION["isadmin"])){
+    if($_SESSION["isadmin"]!=1){
+        header('Location: localhost/agile/auth');
+        exit();
+    }        
+}
+else if (!isset($_SESSION["isadmin"])){
+    header('Location: http://'.$_SERVER['HTTP_HOST'].'/agile/auth');
+    exit();
+}       
 
 class Product extends MY_Controller{
     function __construct()
@@ -183,7 +193,7 @@ class Product extends MY_Controller{
         $data['product'] = $this->Product_model->get_product($id);
         
         $data['_view'] = 'product/details';
-        $this->load->view('userlayouts/main',$data);        
+        $this->load->view('layouts/main',$data);        
     }
     
 }

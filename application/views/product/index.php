@@ -43,7 +43,7 @@
 										
 											
                                             <td class='text-center'>  
-
+                                            <a href='<?=base_url()?>product/details/<?= $c['id']?>' class="btn btn-primary btn-xs" data-toggle="tooltip"  data-original-title="Chi tiết"><i class='material-icons' >details</i></a>
                                             <a href='<?=base_url()?>product/edit/<?= $c['id']?>' class="btn btn-warning btn-xs" data-toggle="tooltip"  data-original-title="Sửa"><i class='material-icons' >edit</i></a>
                                             <a  onclick="onDelete('<?= $c['id']?>','<?= $c['name']?>')" class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Xóa"><i class='material-icons' >delete</i></a>
                                              </td>

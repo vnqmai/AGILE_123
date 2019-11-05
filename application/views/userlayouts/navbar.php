@@ -1,6 +1,6 @@
 
 <div class="navbar nav_title" style="border: 0;">
-  <a class="site_title" href="order"> <i class="material-icons" style="font: Courier">account_balance</i><span> 292 Food</span></a>
+  <a class="site_title" href="<?php base_url(); ?>"> <i class="material-icons" style="font: Courier">account_balance</i><span> 292 Food</span></a>
 </div>
 
 <div class="top_nav">
@@ -24,7 +24,15 @@
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <!-- <li><a href="<?=base_url()?>staff/profile/<?=$_SESSION['user']->id?>"> <i class="material-icons">face</i> Profile </a></li> -->
                     
-                   
+                   <?php
+                    if(isset($_SESSION["isadmin"])){
+                      if($_SESSION["isadmin"]==1){
+                    ?>
+                        <li><a href="<?=base_url()?>product">Trang quản trị</a></li>
+                    <?php
+                      }
+                    }
+                   ?>
                     <li><a href="<?=base_url()?>auth/logout"><i class="material-icons">exit_to_app</i> Log Out</a></li>
                   </ul>
                 </li>

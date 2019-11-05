@@ -100,4 +100,11 @@ class Order extends MY_Controller{
             'message' =>'Thất bại!'
         ));               
     }   
+
+    function details($id){
+        $data['product'] = $this->Product_model->get_product($id);
+        
+        $data['_view'] = 'product/details';
+        $this->load->view('userlayouts/main',$data);    
+    }
 }
