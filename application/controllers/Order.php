@@ -23,6 +23,13 @@ class Order extends MY_Controller{
         $this->load->view('userlayouts/main',$data);
     }
 
+    function details($id){
+        $data['product'] = $this->Product_model->get_product($id);
+        
+        $data['_view'] = 'product/details';
+        $this->load->view('userlayouts/main',$data);        
+    }
+
     
     
 }

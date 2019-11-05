@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
 
-session_start();
+session_start();    
 if(isset($_SESSION["isadmin"])){
     if($_SESSION["isadmin"]!=1){
         header('Location: localhost/agile/auth');
@@ -14,7 +14,7 @@ if(isset($_SESSION["isadmin"])){
 else if (!isset($_SESSION["isadmin"])){
     header('Location: http://'.$_SERVER['HTTP_HOST'].'/agile/auth');
     exit();
-}    
+}
 
 class Product extends MY_Controller{
     function __construct()
@@ -119,7 +119,7 @@ class Product extends MY_Controller{
     }
 
     function remove($id)
-    {
+    {                
         $product = $this->Product_model->get_product($id);
           // check if the product exists before trying to delete it
         try{
@@ -143,6 +143,13 @@ class Product extends MY_Controller{
             ));
         }
         
+    }
+
+    function details($id){
+        $data['product'] = $this->Product_model->get_product($id);
+        
+        $data['_view'] = 'product/details';
+        $this->load->view('layouts/main',$data);        
     }
     
 }
