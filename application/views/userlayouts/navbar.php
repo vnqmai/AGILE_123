@@ -12,8 +12,9 @@
              <?php
                   $CI =& get_instance();
                   $CI->load->model('User_model');
-                  $user = $CI->User_model->get_user($_SESSION['user']->id);
-            ?>
+                  if(isset($_SESSION['user'])){
+                    $user = $CI->User_model->get_user($_SESSION['user']->id);
+              ?>              
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -27,8 +28,21 @@
                     <li><a href="<?=base_url()?>auth/logout"><i class="material-icons">exit_to_app</i> Log Out</a></li>
                   </ul>
                 </li>
-
-                
+              </ul>
+              <?php
+                }  
+                else{                                                    
+              ?>
+              <?php
+                }                                    
+              ?>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="<?php base_url()?>auth/createaccount" class="btn btn-default">Đăng ký</a>                                    
+                </li>  
+                <li class="">
+                  <a href="<?php base_url()?>auth" class="btn btn-default">Đăng nhập</a>                  
+                </li>
               </ul>
             </nav>
           </div>
