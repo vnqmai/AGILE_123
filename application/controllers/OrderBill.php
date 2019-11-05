@@ -38,14 +38,14 @@ class OrderBill extends MY_Controller{
             $params = array(
                 'userId' => $_SESSION['user']->id,
                 'totalPrice' => $this->input->post('totalPrice'),
-                'status' => $this->input->post('status'),
+				'status' => $this->input->post('status'),
                 'description' => $this->input->post('description'),
                 'timestamp' =>date('Y-m-d H:i:s'),
                 'id'            => ObjectId()
             );
         
             $bill_id = $this->Order_bill_model->add_bill($params);
-            return redirect(base_url().'OrderBill/index');
+            return redirect(base_url().'bill/index');
         }
         else
         {                   
@@ -72,14 +72,14 @@ class OrderBill extends MY_Controller{
             {   
                 $params = array(
                     'totalPrice' => $this->input->post('totalPrice'),
-                    //'userId' => $_SESSION['user']->id,
-                    'status' => $this->input->post('status'),
+					'userId' => $_SESSION['user']->id,
+					'status' => $this->input->post('status'),
                     'description' => $this->input->post('description'),
                     'timestamp' =>date('Y-m-d H:i:s'),
                 );
 
                 $this->Order_bill_model->update_bill($id,$params);            
-                return redirect(base_url().'OrderBill/index');
+                return redirect(base_url().'OrderBill');
             }
             else
             {
