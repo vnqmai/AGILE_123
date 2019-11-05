@@ -79,7 +79,7 @@ class OrderBill extends MY_Controller{
                 );
 
                 $this->Order_bill_model->update_bill($id,$params);            
-                return redirect(base_url().'bill/index');
+                return redirect(base_url().'OrderBill');
             }
             else
             {

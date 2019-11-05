@@ -48,9 +48,12 @@
     <a href="#top" class="smoothscroll scroll-top">
         <span class="icon-keyboard_arrow_up"></span>
       </a>
-
+      <div class="col-6">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.655819588474!2d106.68040551480068!3d10.760986792332014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b8e6575c3%3A0x48d253bde1931e59!2zxJDhuqFpIGjhu41jIFPGsCBQaOG6oW0!5e0!3m2!1svi!2s!4v1572768545867!5m2!1svi!2s"  frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+          </div>
       <div class="container">
         <div class="row mb-5">
+        
           <div class="col-6 col-md-2 mb-2 mb-md-0">
             <h2 style="font-family:Tahoma; color:white">Công ty</h2>
             <ul class="list-unstyled">
