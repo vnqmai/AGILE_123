@@ -40,7 +40,7 @@
 
                                 <?php }?>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <a class="btn btn-primary waves-effect btn-block" onclick="order()">ĐẶT MÓN</a>
+                                        <a onclick="order()" class="btn btn-primary waves-effect btn-block" >ĐẶT MÓN</a>
                                     </div>
                             </div>
                             </form>
@@ -52,7 +52,7 @@
             </div>
         </div>
         <script>
-       function order(){           
+       function order(){  
            var total=0;
       var data= $("#_order").serializeArray().map(x=>{
           return {
@@ -67,7 +67,7 @@
     
       data.forEach(callback);
         var self = this;
-        
+       
         var isLogged = <?php echo isset($_SESSION['user'])?1:0; ?> ;
        if(!isLogged){
             swal({
@@ -120,7 +120,8 @@
                                 text: result.message
                             }, function() {
                                 if(result.isSuccess == true){
-                                    window.location.reload();
+                                    // window.location.reload();
+                                    window.location.replace("<?=base_url()?>Order/billDetail");
                                 }                           
                             });                                             
                         }

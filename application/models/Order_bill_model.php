@@ -46,6 +46,24 @@ class Order_bill_model extends CI_Model
         // $this->db->order_by('id', 'desc');
         // return $this->db->get('bill')->result_array();
     }
+
+    function get_bill_latest_by_user_id($user_id)
+    {
+        // $this->db->order_by('id', 'desc');
+        return $this->db->select('b.*,u.firstName as firstName,u.lastName as lastName')
+        ->from('order_bill b')
+        
+        ->join('users u','u.id=b.userId','left')  
+        // ->where('b.del !=',1) 
+        // ->or_where('b.del is null') 
+        ->where("(b.del != 1 OR b.del is null)")
+        ->where('b.userId',$user_id)
+        ->order_by('timestamp', 'desc')
+         ->get()
+        ->row_array();
+        // $this->db->order_by('id', 'desc');
+        // return $this->db->get('bill')->result_array();
+    }
    
         
     /*
