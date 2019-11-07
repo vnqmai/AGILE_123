@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+require_once('settings.php');
+require_once('google-login-api.php');
+?>
 <html>
 
 <head>
@@ -55,10 +59,18 @@
                         
                         <div class="col-xs-12">
                             <button id="myBtn" class="btn btn-block bg-blue waves-effect" type="submit" onclick="login()">Đăng nhập</button>
+                            <a id="login-button" href="<?= 'https://accounts.google.com/o/oauth2/auth?scope=' 
+. urlencode('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email') 
+. '&redirect_uri=' . urlencode(CLIENT_REDIRECT_URL) 
+. '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online' ?>">Login with Google</a>
                         </div>
                     </div>
-                    <div class="row m-t-15 m-b--20">
-                        
+                    <div class="row m-t-0 m-b--0">
+                        <div class="col-xs-12 align-right">
+                            <a href="<?=base_url()?>Auth/createaccount">Tạo tài khoản</a>
+                        </div>
+                    </div>
+                    <div class="row m-t-0 m-b--0">
                         <div class="col-xs-12 align-right">
                             <a href="<?=base_url()?>Auth/forgetPassword">Quên mật khẩu?</a>
                         </div>

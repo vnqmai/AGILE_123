@@ -1,12 +1,12 @@
 <?php
 
 /* Google App Client Id */
-define('CLIENT_ID', '103672694883-oh5bkapgau4u1g7e3gagu4o8lcu6i8v7.apps.googleusercontent.com ');
+define('CLIENT_ID', '469276440555-0rq8s7h1unj9s0ishv07gu52qakol30i.apps.googleusercontent.com');
 
 /* Google App Client Secret */
-define('CLIENT_SECRET', 'jSmkrHRLAKnkJcb21I_W8Ui9 ');
+define('CLIENT_SECRET', 'z_nfzr32jPN4vFlzSfMEv9_I');
 
 /* Google App Redirect Url */
-define('CLIENT_REDIRECT_URL', 'http://localhost/agile_123/application/controllers/oauth.php');
+define('CLIENT_REDIRECT_URL', 'http://localhost/AGILE_123-master/');
 
 ?>
