@@ -51,6 +51,10 @@
       <div class="col-6">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.655819588474!2d106.68040551480068!3d10.760986792332014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b8e6575c3%3A0x48d253bde1931e59!2zxJDhuqFpIGjhu41jIFPGsCBQaOG6oW0!5e0!3m2!1svi!2s!4v1572768545867!5m2!1svi!2s"  frameborder="0" style="border:0;" allowfullscreen=""></iframe>
           </div>
+          <div class="col-6">
+          <div class="fb-page" data-href="https://www.facebook.com/baeminvina/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+						<blockquote cite="https://www.facebook.com/baeminvina/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/baeminvina/">292 food</a></blockquote>
+					</div>          </div>
       <div class="container">
         <div class="row mb-5">
         
@@ -148,4 +152,5 @@
                 })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
                 subiz('setAccount', 'acqmebjsxywvavzewfqf');
         </script>
+        	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0"></script>
 <!-- End Subiz -->
