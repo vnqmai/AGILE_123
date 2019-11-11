@@ -1,7 +1,10 @@
 
 <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-   
+    <a href="http://www.facebook.com/sharer.php?u=http://45.119.84.79/agile/" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+   <meta property="og:url" content="http://45.119.84.79/agile/">
      <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <link href="<?=base_url()?>public/assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
